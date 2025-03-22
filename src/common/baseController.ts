@@ -1,6 +1,7 @@
-import { ILogger } from './../logger/logger.interface';
 import { Router, Response } from 'express';
 import { injectable } from 'inversify';
+
+import { ILogger } from './../logger/logger.interface';
 import 'reflect-metadata';
 import { IControllerRoute } from './route.interface';
 
@@ -16,7 +17,11 @@ export abstract class BaseController {
 		return this._router;
 	}
 
-	public send<T>(res: Response, code: number, message: T): Response<any, Record<string, any>> {
+	public send<T>(
+		res: Response,
+		code: number,
+		message: T,
+	): Response<unknown, Record<string, unknown>> {
 		res.type('application/json');
 		return res.status(code).json(message);
 	}

@@ -1,13 +1,13 @@
-import { TYPES } from './types';
 import { Server } from 'http';
 import express, { Express } from 'express';
-
-import { ILogger } from './logger/logger.interface';
 import { inject, injectable } from 'inversify';
 import bodyParser from 'body-parser';
+
+import { ILogger } from './logger/logger.interface';
+import { TYPES } from './types';
 import 'reflect-metadata';
 import { IExeptionFilter } from './errors/exeption.filter.interface';
-import { HelloController } from './controllers/hello/hello.controller';
+import { ObjectController } from './controllers/object/object.controller';
 
 @injectable()
 export class App {
@@ -17,7 +17,7 @@ export class App {
 
 	constructor(
 		@inject(TYPES.Logger) private logger: ILogger,
-		@inject(TYPES.HelloController) private helloController: HelloController,
+		@inject(TYPES.ObjectController) private objectController: ObjectController,
 		@inject(TYPES.ExeptionFilter) private exeptionFilter: IExeptionFilter,
 	) {
 		this.app = express();
@@ -29,7 +29,7 @@ export class App {
 	}
 
 	private useRoutes(): void {
-		this.app.use('/hello', this.helloController.router);
+		this.app.use('/objects', this.objectController.router);
 	}
 
 	private useExeptionFilters(): void {

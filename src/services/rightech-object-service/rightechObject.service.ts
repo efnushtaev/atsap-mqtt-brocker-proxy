@@ -5,6 +5,7 @@ import { TYPES } from '../../types';
 import { ILogger } from '../../logger/logger.interface';
 import { IRightechObjectService } from './rightechObject.service.interface';
 import { IConfigService } from '../../config/config.service.interface';
+import { MQTT_BROCKER_API_URL } from '../../const';
 
 @injectable()
 export class RightechObjectService implements IRightechObjectService {
@@ -16,7 +17,7 @@ export class RightechObjectService implements IRightechObjectService {
 	async getObjectById(id: string) {
 		try {
 			// @todo добавить типизацию для response
-			const response = await axios.get(`https://dev.rightech.io/api/v1/objects/${id}`, {
+			const response = await axios.get(`${MQTT_BROCKER_API_URL}objects/${id}`, {
 				headers: {
 					Authorization: `Bearer ${this.config.get('RIGHTECH_API_TOKEN')}`,
 				},
@@ -32,7 +33,7 @@ export class RightechObjectService implements IRightechObjectService {
 	async getAllObjects() {
 		try {
 			// @todo добавить типизацию для response
-			const response = await axios.get('https://dev.rightech.io/api/v1/objects', {
+			const response = await axios.get(`${MQTT_BROCKER_API_URL}objects`, {
 				headers: {
 					Authorization: `Bearer ${this.config.get('RIGHTECH_API_TOKEN')}`,
 				},

@@ -7,6 +7,7 @@ import { IObjectController } from './object.controller.interface';
 import { BaseController } from '../../common/baseController';
 import { ILogger } from '../../logger/logger.interface';
 import { IRightechObjectService } from '../../services/rightech-object-service/rightechObject.service.interface';
+import { ControllersRoutesURL, RequestMethod } from '../../const';
 
 @injectable()
 export class ObjectController extends BaseController implements IObjectController {
@@ -17,13 +18,13 @@ export class ObjectController extends BaseController implements IObjectControlle
 		super(loggerService);
 		this.bindRoutes([
 			{
-				path: '/api/v1/objects/:id',
-				method: 'get',
+				path: ControllersRoutesURL.OBJECT_ID,
+				method: RequestMethod.GET,
 				func: this.getObjectById,
 			},
 			{
-				path: '/api/v1/objects',
-				method: 'get',
+				path: ControllersRoutesURL.OBJECTS_ALL,
+				method: RequestMethod.GET,
 				func: this.getAllObjects,
 			},
 		]);
@@ -35,11 +36,8 @@ export class ObjectController extends BaseController implements IObjectControlle
 		return this.ok(res, { ...object });
 	}
 
-	async getAllObjects(req: Request, res: Response) {
+	async getAllObjects(_: Request, res: Response) {
 		const object = await this.rightechObjectService.getAllObjects();
-
-		console.log('---------------------------');
-		console.log(object);
 
 		return this.ok(res, { ...object });
 	}

@@ -11,7 +11,7 @@ export class Model {
 		return this._greetings;
 	}
 
-	public static createModel(greetingsSubject?: string): Hello {
-		return new Hello(greetingsSubject);
-	}
+	// public static createModel(greetingsSubject?: string): Hello {
+	// 	return new Hello(greetingsSubject);
+	// }
 }

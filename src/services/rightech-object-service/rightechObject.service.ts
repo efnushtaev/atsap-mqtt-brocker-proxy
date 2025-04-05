@@ -22,7 +22,7 @@ export class RightechObjectService implements IRightechObjectService {
 					Authorization: `Bearer ${this.config.get('RIGHTECH_API_TOKEN')}`,
 				},
 			});
-			this.logger.log('Succes fetching data:', response);
+			this.logger.log('Succes fetching data:', response.status);
 			return response.data;
 		} catch (error) {
 			this.logger.error('Error fetching data:', error);
@@ -38,8 +38,7 @@ export class RightechObjectService implements IRightechObjectService {
 					Authorization: `Bearer ${this.config.get('RIGHTECH_API_TOKEN')}`,
 				},
 			});
-
-			this.logger.log('Succes fetching data:', response);
+			this.logger.log('Succes fetching data:', response.status);
 			return response.data;
 		} catch (error) {
 			this.logger.error('Error fetching data:', error);

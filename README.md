@@ -28,8 +28,8 @@
 
 1. Клонируйте репозиторий:
     ```
-    git clone https://github.com/your-repo/atsap-mqtt-broker-proxy.git
-    cd rightech-mqtt-brocker-service-api
+    https://github.com/efnushtaev/atsap-mqtt-brocker-proxy.git
+    cd atsap-mqtt-brocker-proxy
     ```
 2. Установите зависимости:
     ```
@@ -65,11 +65,11 @@
 
 1. Соберите Docker-образ:
     ```
-    docker build -t rightech-mqtt-brocker-service-api .
+    docker build -t atsap-mqtt-brocker-proxy .
     ```
 2. Запустите контейнер:
     ```
-    docker run --env-file .env -p 3000:3000 rightech-mqtt-brocker-service-api
+    docker run --env-file .env -p 3000:8001 atsap-mqtt-brocker-proxy
     ```
 Приложение будет доступно по адресу http://localhost:3000.
 

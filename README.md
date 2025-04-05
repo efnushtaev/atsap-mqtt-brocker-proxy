@@ -77,12 +77,10 @@
 
 ## 🔧 Переменные окружения
 
-Пример файла .env:
+- Пример файла `.env`:
     ```
-    RIGHTECH_API_TOKEN=your_rightech_api_token
-    NODE_ENV=production
-    PORT=8001
+    RIGHTECH_API_TOKEN=your_rightech_api_token    // Токен для доступа к Rightech API.
+    NODE_ENV=production                           // Среда выполнения (development, production).
+    PORT=8001                                     // Порт, на котором запускается приложение.
     ```
-- RIGHTECH_API_TOKEN: Токен для доступа к Rightech API.
-- NODE_ENV: Среда выполнения (development, production).
-- PORT: Порт, на котором запускается приложение.
+    
